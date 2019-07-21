@@ -1,0 +1,7 @@
+"id","visit","item1","item2","item3","item4Text","item5Codes","item6","item7"
+1,"10 months",1,NA,NA,"father","0 (Never)",1,1
+1,"20 months",2,NA,"Missing","Father","1",2,2
+2,"10 months",3,3,"-999","fth","2",NA,3
+2,"20 months",3,4,"4","mother","3",NA,NA
+3,"10 months",5,5,"5","Mother","4",NA,NA
+3,"20 months",6,6,"6","Mother","5 (Always)",NA,6
