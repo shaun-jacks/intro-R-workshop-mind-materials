@@ -10,7 +10,12 @@
 #    y = qchat_fake_lin_outcome
 #    color = Who_completed_the_test
 # 5. Create a linear model, with equation:
-#    qchat_fake_lin_outcome ~ 1 + qchat_fake_score1
+#    5.1 qchat_fake_lin_outcome ~ 1 + qchat_fake_score1
+#    5.2 summarize this linear model
+#    5.3 Create an Effects object with effects package and predictor var
+#        qchat_fake_score1
+#    5.4 Plot this object
+
 
 
 # Part 1
@@ -89,8 +94,11 @@ ggplot(data = qchat) +
 
 # Part 5
 # 5. Create a linear model, with equation:
-#    qchat_fake_lin_outcome ~ 1 + qchat_fake_score1
-
+#    5.1 qchat_fake_lin_outcome ~ 1 + qchat_fake_score1
+#    5.2 summarize this linear model
+#    5.3 Create an Effects object with effects package and predictor var
+#        qchat_fake_score1
+#    5.4 Plot this object
 
 
 
