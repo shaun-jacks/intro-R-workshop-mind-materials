@@ -16,6 +16,11 @@ class(NA)
 
 # Use read.csv to read in adosm1 file using your own file path
 # Look at where your adosm1.csv is saved AKA the file path
+
+# Our input data will be an artificial ADOS Module 1 dataset
+# with some fake columns to demonstrate how to use R 
+# to perform specific data analyses.
+
 adosm1 <- read.csv("~/Desktop/Programming/workshops/intro-R-workshop-mind-materials/datasets/adosm1.csv",
                    stringsAsFactors = FALSE)
 # stringsAsFactors is an argument in the function that allows you

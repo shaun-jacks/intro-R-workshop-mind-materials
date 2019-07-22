@@ -2,9 +2,9 @@
 ## Overview
 # 1. Read in qchat dataset
 # 2. Get the unique frequency count of values from the column: 
-#    "Who.completed.the.test" with table()
+#    "Who_completed_the_test" with table()
 # 3. Recode the "Health care professional" values to "Health Care Professional"
-#    in the "Who.completed.the.test" column with ifelse() to clean values
+#    in the "Who_completed_the_test" column with ifelse() to clean values
 # 4. ggplot2 - plot geom_points with
 #    x = qchat_fake_score1
 #    y = qchat_fake_lin_outcome
@@ -35,7 +35,7 @@ qchat <- read.csv("./datasets/qchat-10.csv", stringsAsFactors = FALSE)
 
 # Part 2
 # 2. Get the unique frequency count of values from the column: 
-#    "Who.completed.the.test" with table()
+#    "Who_completed_the_test" with table()
 
 
 
@@ -87,8 +87,8 @@ ggplot(data = qchat) +
     x = qchat_fake_score1,
     y = qchat_fake_lin_outcome,
     color = Who_completed_the_test
+    )
   )
-)
 
 
 

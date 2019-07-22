@@ -3,7 +3,7 @@
 #-----------------------------------------------------------------------------#
 
 
-# Our input data will be a scored version of the artificial ADOS Module 2dataset
+# Our input data will be a scored version of the artificial ADOS Module 2 dataset
 # with some fake columns to demonstrate how to use R 
 # to perform specific data analyses.
 

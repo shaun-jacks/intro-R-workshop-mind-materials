@@ -52,7 +52,7 @@ parentQs$item5Codes <- as.numeric(parentQs$item5Codes)
 # Using the parentQs created in your R environment, clean up item 4
 # Replace the item 4 values that represent a "father" to "father"
 # and that represent a "mother" to "mother"
-parentQs$item4Text
+table(parentQs$item4Text)
 
 
 
