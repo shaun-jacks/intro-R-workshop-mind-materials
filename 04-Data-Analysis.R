@@ -21,7 +21,7 @@ summary(adosm2$ados_sarb_total)
 
 
 ## Chi-Squared Test
-chisq.test(table(adosm2$cbe_36, adosm2$recruitment_group))
+chisq.test(table(adosm2$clinical_outcome, adosm2$recruitment_group))
 
 ### Correlation
 
@@ -73,13 +73,13 @@ abline(linearMod)
 #-----------------------------------------------------------------------------#
 #### Logistic Regression ####
 #-----------------------------------------------------------------------------#
-adosm2$cbe_asd <- ifelse(adosm2$cbe_36 %in% c("Autism", "ASD"), "ASD", "Non-ASD")
+adosm2$clinical_asd <- ifelse(adosm2$clinical_outcome %in% c("Autism", "ASD"), "ASD", "Non-ASD")
 
-adosm2$cbe_asd <- as.factor(adosm2$cbe_asd)
+adosm2$clinical_asd <- as.factor(adosm2$clinical_asd)
 
-adosm2$cbe_asd <- relevel(adosm2$cbe_asd, ref = "Non-ASD")
+adosm2$clinical_asd <- relevel(adosm2$clinical_asd, ref = "Non-ASD")
 
-mod <- glm(cbe_asd ~ 1 + ados_sarb_total,
+mod <- glm(clinical_asd ~ 1 + ados_sarb_total,
            data = adosm2,
            family = "binomial")
 
@@ -93,13 +93,13 @@ plot(eff,
 
 # If R version 3.4 or older
 # Turn the dependent variable to 0s and 1s
-adosm2$cbe_asd_2 <- ifelse(as.character(adosm2$cbe_asd) == 'ASD', 1, 0)
+adosm2$clinical_asd_2 <- ifelse(as.character(adosm2$clinical_asd) == 'ASD', 1, 0)
 plot(x = adosm2$ados_sarb_total,
-     y = adosm2$cbe_asd_2,
+     y = adosm2$clinical_asd_2,
      xlab = "ados_sarb",
      ylab="Probability of cbe_asd")
 # Create logistic regression model, same as before
-g <- glm(cbe_asd_2 ~ 1 + ados_sarb_total,
+g <- glm(clinical_asd_2 ~ 1 + ados_sarb_total,
          family="binomial",
          data=adosm2)
 # Plot a curve with model
@@ -114,10 +114,10 @@ curve(
 ### Mixed Effects Logistic Regression
 
 # analyze- logistic regression mixed effects
-adosm2$cbe_asd <- ifelse(adosm2$cbe_36 %in% c("Autism", "ASD"), "ASD", "Non-ASD")
-adosm2$cbe_asd <- as.factor(adosm2$cbe_asd)
-adosm2$cbe_asd <- relevel(adosm2$cbe_asd, ref = "Non-ASD")
-mod <- glmer(cbe_asd ~ 1 + (1|visit) + ados_sarb_total,
+adosm2$clinical_asd <- ifelse(adosm2$clinical_asd %in% c("Autism", "ASD"), "ASD", "Non-ASD")
+adosm2$clinical_asd <- as.factor(adosm2$clinical_asd)
+adosm2$clinical_asd <- relevel(adosm2$clinical_asd, ref = "Non-ASD")
+mod <- glmer(clinical_asd ~ 1 + (1|visit) + ados_sarb_total,
                    data = adosm2,
                    family = "binomial")
 eff <- Effect(c("ados_sarb_total"), mod)
