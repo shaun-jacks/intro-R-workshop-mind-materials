@@ -58,10 +58,15 @@ summary(linearMod)
 # create effects object
 eff_fake_score1 <- Effect(c("ados_fake_score1"), linearMod)
 plot(eff_fake_score1)
-eff_fake_score2 <- Effect(c("ados_fake_score2"), linearMod)
+# Plot with residuals
+eff_fake_score2 <- Effect(c("ados_fake_score2"), linearMod, residuals = TRUE)
 plot(eff_fake_score2)
 eff_fake_score_1_2<- Effect(c("ados_fake_score1", "ados_fake_score2"), linearMod)
 plot(eff_fake_score_1_2)
+# If R version 3.4 or older
+# Plot model with abline instead of Effect()
+plot(adosm2$ados_fake_score1, adosm2$ados_fake_lin_outcome, col = "blue")
+abline(linearMod)
 
 
 
@@ -86,8 +91,22 @@ plot(eff,
          ticks = list(at = c(.01, .1, .2, .4, .6, .8,  .99))))
 )
 
-
-
+# If R version 3.4 or older
+# Turn the dependent variable to 0s and 1s
+adosm2$cbe_asd_2 <- ifelse(as.character(adosm2$cbe_asd) == 'ASD', 1, 0)
+plot(x = adosm2$ados_sarb_total,
+     y = adosm2$cbe_asd_2,
+     xlab = "ados_sarb",
+     ylab="Probability of cbe_asd")
+# Create logistic regression model, same as before
+g <- glm(cbe_asd_2 ~ 1 + ados_sarb_total,
+         family="binomial",
+         data=adosm2)
+# Plot a curve with model
+curve(
+  predict(g, data.frame(ados_sarb_total=x), type="resp"), 
+  add=TRUE
+)
 
 #-----------------------------------------------------------------------------#
 #### Mixed Effects Models ####

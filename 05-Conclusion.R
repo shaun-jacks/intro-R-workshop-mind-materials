@@ -144,6 +144,5 @@ plot(eff)
 
 # If R version 3.4 or older
 # Plot model with abline instead of Effect()
-abline(lm())
 plot(qchat$qchat_fake_score1, qchat$qchat_fake_lin_outcome, col = "blue")
 abline(mod)
