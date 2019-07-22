@@ -1,5 +1,7 @@
 ## Introduce RStudio
 
+# Explain comments
+
 # Describe how to create/assign variables
 
 # Class Demostration
@@ -127,12 +129,12 @@ View(adosm1[, c("id", "visit")])
 
 ## Subsetting Rows
 # rows by number, all columns
-adosm1[1, ]
+adosm1[1,] 
 # rows by vector of numbers, all columns
 adosm1[c(1, 2, 3, 5), ]
 
 ## Subsetting by rows to answer questions in data
-# through filtering a dataframe
+# through filtering a dataframe with logical vectors
 
 ## Filter for all visits at 36mo
 adosm1$visit # view all visit values
@@ -147,7 +149,7 @@ View(adosm1[visits36mo,])
 
 #-----------------------------------------------------------------------------#
 #### Problem 2:
-# 1. Filter the adosm1 dataset for rows where visit == 36 and
+# 1. Filter the adosm1 dataset for rows where visit == 18 and
 #    columns == ados_algorithm, ados_version.
 
 
@@ -167,7 +169,7 @@ View(adosm1[visits36mo,])
 
 
 
-adosm1[adosm1$visit == "36", c("ados_version", "ados_algorithm")]
+adosm1[adosm1$visit == "18", c("ados_version", "ados_algorithm")]
 #-----------------------------------------------------------------------------#
 #### Functions to explore datasets ####
 #-----------------------------------------------------------------------------#
@@ -187,7 +189,7 @@ table(adosm1$visit, adosm1$ados_algorithm)
 
 ### Checking for duplicates --------------------------------------------------#
 # Read in dataframe with duplicates
-dup_adosm1 <- read.csv('./datasets/adosm1_duplicates.csv',
+dup_adosm1 <- read.csv("./datasets/adosm1_duplicates.csv",
                        stringsAsFactors = FALSE)
 
 ## duplicated()

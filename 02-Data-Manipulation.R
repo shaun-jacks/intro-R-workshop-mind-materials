@@ -18,6 +18,8 @@ View(fixedDf)  # View fixed dataframe
 # Read in messy dataset that we will clean
 parentQs <- read.csv('./datasets/messyDataset.csv', stringsAsFactors = FALSE)
 
+# Our dataset
+head(parentQs)
 
 # Finding NAs with is.na()
 is.na(parentQs$item2)
@@ -32,7 +34,7 @@ parentQs$item2 <- ifelse(is.na(parentQs$item2), 0, parentQs$item2)
 
 ## Nesting ifelse() statements
 # ifelse(condition 1, if condition 1 true then do this, else:
-#   ifelse(condition2, if condition2 is true then do this, else: 
+#   ifelse(condition 2, if condition2 is true then do this, else: 
 #     replace with last value))
 
 # Look at item5Codes
@@ -58,6 +60,19 @@ table(parentQs$item4Text)
 
 
 
+
+
+
+
+
+# Solution Below
+
+parentQs$item4Text <- ifelse(parentQs$item4Text == "Father", "father",
+                            ifelse(parentQs$item4Text == "fth", "father",
+                                    ifelse(parentQs$item4Text == "Mother", "mother",
+                                           parentQs$item4Text)))
+
+
 #-----------------------------------------------------------------------------#
 #### Writing Data ####
 #-----------------------------------------------------------------------------#
@@ -65,4 +80,4 @@ table(parentQs$item4Text)
 
 # Write your cleaner dataset to the datasets folder and name it
 # cleanedDf.csv
-write.csv(parentQs, './datasets/cleanedDf.csv', row.names = FALSE)
+write.csv(parentQs, "./datasets/cleanedDf.csv", row.names = FALSE)

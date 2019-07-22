@@ -29,6 +29,8 @@ ggplot(data = adosm2) +
                            y = ados_sarb_total, 
                            color = recruitment_group))
 
+# Explain ?function() for help
+
 # ggplot() will create a coordinate system you can add layers on top of
 # it takes in the dataset to use in the graph with the `data` parameter
 
@@ -78,7 +80,7 @@ ggplot(data = adosm2) +
 ggplot(data = adosm2, mapping = aes(x = recruitment_group, y = ados_sarb_total)) +
   geom_boxplot() + labs(x = "Recruitment Group",
                         y = "ADOS SARB Total",
-                        title = 'Recruitment vs. SARB Total')
+                        title = "Recruitment vs. SARB Total")
 
 ## Template for graphing
 

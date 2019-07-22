@@ -9,6 +9,10 @@ library("effects")  # For plotting models
 #-----------------------------------------------------------------------------#
 adosm2 <- read.csv("./datasets/adosm2_scored.csv", 
                    stringsAsFactors = FALSE)
+
+## Our dataset
+head(adosm2)
+
 #-----------------------------------------------------------------------------#
 #### Basic Stats functions ####
 #-----------------------------------------------------------------------------#
@@ -50,7 +54,7 @@ linearMod <-
 
 linearMod
 ### Residuals, P-Values, Coefficients, with summary()
-
+View(linearMod)
 summary(linearMod)
 
 
@@ -65,7 +69,7 @@ eff_fake_score_1_2<- Effect(c("ados_fake_score1", "ados_fake_score2"), linearMod
 plot(eff_fake_score_1_2)
 # If R version 3.4 or older
 # Plot model with abline instead of Effect()
-plot(adosm2$ados_fake_score1, adosm2$ados_fake_lin_outcome, col = "blue")
+plot(x = adosm2$ados_fake_score1, y = adosm2$ados_fake_lin_outcome, col = "blue")
 abline(linearMod)
 
 
@@ -87,13 +91,13 @@ eff <- Effect(c("ados_sarb_total"), mod)
 plot(eff,
      axes = list(
        y = list(
-         lab = "CBE of ASD",
+         lab = "Outcome of ASD",
          ticks = list(at = c(.01, .1, .2, .4, .6, .8,  .99))))
 )
 
 # If R version 3.4 or older
 # Turn the dependent variable to 0s and 1s
-adosm2$clinical_asd_2 <- ifelse(as.character(adosm2$clinical_asd) == 'ASD', 1, 0)
+adosm2$clinical_asd_2 <- ifelse(as.character(adosm2$clinical_asd) == "ASD", 1, 0)
 plot(x = adosm2$ados_sarb_total,
      y = adosm2$clinical_asd_2,
      xlab = "ados_sarb",
